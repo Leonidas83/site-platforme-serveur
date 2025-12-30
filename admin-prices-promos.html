@@ -1,1 +1,31 @@
+admin_prices_promos_html = f"""
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gestion des Prix et Promotions</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion des Prix et Promotions</h1>
+        <p><a href="admin.html" style="color: white; text-decoration: none;">&#8592; Retour au Tableau de Bord</a></p>
+    </header>
 
+    <main>
+        {admin_html_content.split('<section id="price-management-section">')[1].split('</section>')[0]}
+        </section>
+
+        {admin_html_content.split('<section id="promotion-management-section">')[1].split('</section>')[0]}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Administration Services. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+"""
+
+print(admin_prices_promos_html)
