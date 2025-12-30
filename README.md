@@ -1,49 +1,80 @@
-```markdown
-# Mes Services de Stockage et Création
+%%writefile README.md
+# Mon Projet d'Hébergement de Services
 
-## Description du Projet
+Ce dépôt contient le code backend (API Flask avec SQLite) et une interface frontend simple pour la gestion de services d'hébergement, d'utilisateurs et de leurs abonnements.
 
-Ce projet est une page web présentant une gamme de services de stockage et de création numérique. La page est conçue pour être claire, moderne et facile à naviguer, offrant des solutions adaptées aux particuliers, aux créateurs de jeux et aux entreprises.
+## Structure du Projet
 
-### L'Entreprise et les Services Proposés
-
-Notre entreprise est dédiée à fournir des solutions numériques personnalisées. La page met en avant trois catégories de services principales :
-
-1.  **Stockage Cloud Sécurisé et Ultra-Rapide**
-    *   **Cible :** Particuliers ou indépendants souhaitant sécuriser leurs documents.
-    *   **Arguments Clés :** Données stockées localement (Tours, France), accès ultra-rapide, respect de la vie privée.
-    *   **Offres :** Découverte (100 Go), Standard (500 Go), Premium (2 To) avec support et sauvegardes automatiques.
-
-2.  **Stockage pour Créateurs de Jeux**
-    *   **Cible :** Développeurs nécessitant un stockage performant pour des fichiers volumineux (textures, modèles 3D, versions de jeu).
-    *   **Arguments Clés :** Idéal pour Unity/Unreal Engine, stockage haute performance sur SSD, transfert illimité.
-    *   **Offres :** Pack Creator (500 Go), Pack Studio (2 To) avec support développeur/premium et sauvegarde quotidienne.
-
-3.  **Hébergement de Site Internet pour Entreprises**
-    *   **Cible :** Artisans, commerçants ou PME de la région Centre-Val de Loire.
-    *   **Arguments Clés :** Support local avec un interlocuteur dédié à Tours.
-    *   **Offres :** Hébergement Vitrine (WordPress), Hébergement E-commerce, Option Maintenance (mises à jour, sauvegardes).
-
-## Technologies Utilisées
-
-*   **HTML5** : Structure sémantique de la page.
-*   **CSS3** : Mise en forme et stylisation de l'interface utilisateur, y compris un design responsive pour s'adapter à différentes tailles d'écran.
-
-## Installation et Déploiement (pour cette page spécifique)
-
-Pour visualiser cette page web, vous n'avez pas besoin d'installation complexe. Il suffit de suivre ces étapes :
-
-1.  **Enregistrez le code HTML** :
-    *   Copiez le contenu du `html_content` généré (qui inclut le CSS intégré) dans un fichier nommé `index.html`.
-2.  **Ouvrez le fichier** :
-    *   Localisez le fichier `index.html` sur votre ordinateur et ouvrez-le avec n'importe quel navigateur web moderne (Chrome, Firefox, Edge, Safari, etc.).
-
-Alternativement, pour une utilisation sur des plateformes comme CodePen :
-
-1.  **HTML** : Copiez le contenu de la variable `html_body_content` dans la section HTML de CodePen.
-2.  **CSS** : Copiez le contenu de la variable `css_content` dans la section CSS de CodePen.
-
-## Licence
-
-Ce projet est sous licence MIT. Pour plus de détails, veuillez consulter le fichier `LICENSE.md` (non inclus dans cet exemple, mais typiquement présent dans un projet complet).
 ```
+mon-projet-hebergement/
+├── app.py                      # Application Flask principale avec les routes API
+├── initialize_database.py      # Script pour créer et initialiser la base de données SQLite
+├── extended_database.db        # Fichier de la base de données SQLite (généré par initialize_database.py)
+├── requirements.txt            # Dépendances Python
+├── index.html                  # Interface utilisateur frontend HTML
+├── script.js                   # JavaScript pour l'interaction frontend avec l'API
+├── .gitignore                  # Fichiers à ignorer par Git
+├── LICENSE                     # Informations sur la licence du projet
+└── README.md                   # Ce fichier
+```
+
+## Installation
+
+1.  **Cloner le dépôt** :
+    ```bash
+    git clone https://github.com/votre-utilisateur/mon-projet-hebergement.git
+    cd mon-projet-hebergement
+    ```
+2.  **Créer un environnement virtuel (recommandé)** :
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Sur Windows: .\venv\Scripts\activate
+    ```
+3.  **Installer les dépendances Python** :
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Utilisation
+
+1.  **Initialiser la base de données** :
+    Exécutez ce script une seule fois pour créer la base de données `extended_database.db` et la peupler avec des données initiales.
+    ```bash
+    python initialize_database.py
+    ```
+
+2.  **Lancer le serveur Flask** :
+    ```bash
+    export FLASK_APP=app.py
+    export FLASK_ENV=development # Pour le mode développement (débogage)
+    flask run
+    ```
+    Le serveur sera accessible sur `http://127.0.0.1:5000/`.
+
+3.  **Ouvrir l'interface Frontend** :
+    Ouvrez simplement le fichier `index.html` dans votre navigateur web.
+    *Note : Le `script.js` de l'interface est configuré pour communiquer avec l'API sur `http://127.0.0.1:5000`.*
+
+## Routes API Disponibles (via `app.py`)
+
+*   **Utilisateurs** :
+    *   `POST /users`: Créer un nouvel utilisateur.
+    *   `GET /users`: Récupérer tous les utilisateurs.
+    *   `GET /users/<int:user_id>`: Récupérer un utilisateur par ID.
+    *   `PUT /users/<int:user_id>`: Mettre à jour un utilisateur.
+    *   `DELETE /users/<int:user_id>`: Supprimer un utilisateur.
+    *   `POST /login`: Authentification utilisateur.
+    *   `GET /search/users?email=...&first_name=...&last_name=...`: Rechercher des utilisateurs.
+*   **Services** :
+    *   `GET /services`: Récupérer tous les services.
+    *   `GET /services/<int:service_id>`: Récupérer un service par ID.
+*   **Abonnements (User-Services)** :
+    *   `GET /users/<int:user_id>/subscriptions`: Récupérer les abonnements d'un utilisateur.
+    *   `GET /users/<int:user_id>/subscriptions/<int:service_id>`: Récupérer un abonnement spécifique.
+    *   `POST /users/<int:user_id>/subscriptions`: Ajouter un abonnement.
+    *   `PUT /users/<int:user_id>/subscriptions/<int:service_id>`: Mettre à jour un abonnement.
+    *   `DELETE /users/<int:user_id>/subscriptions/<int:service_id>`: Supprimer un abonnement.
+
+## Développement Futur
+
+Des pistes d'amélioration incluent l'implémentation d'une authentification et autorisation robustes (par exemple, JWT), une interface utilisateur plus dynamique et l'ajout de fonctionnalités de gestion administrative.
