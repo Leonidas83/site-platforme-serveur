@@ -1,4 +1,4 @@
-admin_css_content = '''
+```css
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -101,6 +101,4 @@ span.current-price {
     font-weight: bold;
     color: #007bff;
 }
-'''
-
-print(admin_css_content)
+```
