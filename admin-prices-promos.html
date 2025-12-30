@@ -15,52 +15,52 @@ admin_prices_promos_html = '''
 
     <main>
         <section id="price-management-section">
-            <h2>Price Management</h2>
+            <h2>Gestion des Prix</h2>
             <div class="service-price-manager">
-                <h3>Cloud Storage</h3>
-                <p>Current Price: <span id="cloud-storage-current-price">7€</span> / month</p>
-                <label for="cloud-storage-new-price">New Price:</label>
-                <input type="number" id="cloud-storage-new-price" placeholder="Enter new price" min="0" step="0.01">
-                <button class="save-button" data-service="cloud-storage">Save</button>
+                <h3>Stockage Cloud</h3>
+                <p>Prix Actuel: <span id="cloud-storage-current-price">7€</span> / mois</p>
+                <label for="cloud-storage-new-price">Nouveau Prix:</label>
+                <input type="number" id="cloud-storage-new-price" placeholder="Entrez le nouveau prix" min="0" step="0.01">
+                <button class="save-button" data-service="cloud-storage">Enregistrer</button>
             </div>
 
             <div class="service-price-manager">
-                <h3>Game Storage</h3>
-                <p>Current Price: <span id="game-storage-current-price">25€</span> / month</p>
-                <label for="game-storage-new-price">New Price:</label>
-                <input type="number" id="game-storage-new-price" placeholder="Enter new price" min="0" step="0.01">
-                <button class="save-button" data-service="game-storage">Save</button>
+                <h3>Stockage Jeux</h3>
+                <p>Prix Actuel: <span id="game-storage-current-price">25€</span> / mois</p>
+                <label for="game-storage-new-price">Nouveau Prix:</label>
+                <input type="number" id="game-storage-new-price" placeholder="Entrez le nouveau prix" min="0" step="0.01">
+                <button class="save-button" data-service="game-storage">Enregistrer</button>
             </div>
 
             <div class="service-price-manager">
-                <h3>Web Hosting</h3>
-                <p>Current Price: <span id="web-hosting-current-price">25-40€</span> / month</p>
-                <label for="web-hosting-new-price">New Price:</label>
-                <input type="text" id="web-hosting-new-price" placeholder="Enter new price (e.g., 20-35€)">
-                <button class="save-button" data-service="web-hosting">Save</button>
+                <h3>Hébergement Web</h3>
+                <p>Prix Actuel: <span id="web-hosting-current-price">25-40€</span> / mois</p>
+                <label for="web-hosting-new-price">Nouveau Prix:</label>
+                <input type="text" id="web-hosting-new-price" placeholder="Entrez le nouveau prix (ex: 20-35€)">
+                <button class="save-button" data-service="web-hosting">Enregistrer</button>
             </div>
         </section>
 
         <section id="promotion-management-section">
-            <h2>Promotion Management</h2>
+            <h2>Gestion des Promotions</h2>
             <div class="promotion-editor">
-                <h3>Create New Promotion</h3>
-                <label for="promo-code">Promotion Code:</label>
-                <input type="text" id="promo-code" placeholder="e.g., SPRING20">
+                <h3>Créer une Nouvelle Promotion</h3>
+                <label for="promo-code">Code Promotionnel:</label>
+                <input type="text" id="promo-code" placeholder="ex: PRINTEMPS20">
 
-                <label for="promo-discount">Discount Percentage:</label>
-                <input type="number" id="promo-discount" placeholder="e.g., 20" min="0" max="100" step="0.1">
+                <label for="promo-discount">Pourcentage de Réduction:</label>
+                <input type="number" id="promo-discount" placeholder="ex: 20" min="0" max="100" step="0.1">
 
-                <label for="promo-start-date">Start Date:</label>
+                <label for="promo-start-date">Date de Début:</label>
                 <input type="date" id="promo-start-date">
 
-                <label for="promo-end-date">End Date:</label>
+                <label for="promo-end-date">Date de Fin:</label>
                 <input type="date" id="promo-end-date">
 
                 <label for="promo-description">Description:</label>
-                <textarea id="promo-description" placeholder="Describe the promotion (e.g., 20% off all cloud storage plans)" rows="4"></textarea>
+                <textarea id="promo-description" placeholder="Décrivez la promotion (ex: 20% de réduction sur tous les plans de stockage cloud)" rows="4"></textarea>
 
-                <button class="save-button">Save Promotion</button>
+                <button class="save-button">Enregistrer Promotion</button>
             </div>
         </section>
     </main>
