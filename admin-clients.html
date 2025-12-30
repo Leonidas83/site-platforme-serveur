@@ -1,0 +1,90 @@
+admin_clients_html = """
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gestion des Clients</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion des Clients</h1>
+        <p><a href="admin.html" style="color: white; text-decoration: none;">&#8592; Retour au Tableau de Bord</a></p>
+    </header>
+
+    <main>
+        <section id="client-list-section">
+            <h2>Liste des Clients</h2>
+            <div class="client-filters">
+                <label for="search-client">Rechercher un client:</label>
+                <input type="text" id="search-client" placeholder="Nom, Email...">
+                <button class="cta-button">Rechercher</button>
+            </div>
+            <table class="client-table">
+                <thead>
+                    <tr>
+                        <th>ID Client</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Service Actif</th>
+                        <th>Date d'inscription</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CLT001</td>
+                        <td>Alice Dupont</td>
+                        <td>alice.d@example.com</td>
+                        <td>Cloud Storage Premium</td>
+                        <td>2023-01-15</td>
+                        <td><button class="save-button">Voir Détails</button></td>
+                    </tr>
+                    <tr>
+                        <td>CLT002</td>
+                        <td>Bob Martin</td>
+                        <td>bob.m@example.com</td>
+                        <td>Game Storage Studio</td>
+                        <td>2022-11-20</td>
+                        <td><button class="save-button">Voir Détails</button></td>
+                    </tr>
+                    <!-- More client rows will be dynamically loaded -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="add-client-section">
+            <h2>Ajouter un Nouveau Client</h2>
+            <form>
+                <label for="new-client-name">Nom:</label>
+                <input type="text" id="new-client-name" placeholder="Nom Complet">
+
+                <label for="new-client-email">Email:</label>
+                <input type="email" id="new-client-email" placeholder="adresse@example.com">
+
+                <label for="new-client-service">Service Initial:</label>
+                <select id="new-client-service">
+                    <option value="">Sélectionner un service</option>
+                    <option value="cloud-discovery">Cloud Storage Découverte</option>
+                    <option value="cloud-standard">Cloud Storage Standard</option>
+                    <option value="cloud-premium">Cloud Storage Premium</option>
+                    <option value="game-creator">Game Storage Creator</option>
+                    <option value="game-studio">Game Storage Studio</option>
+                    <option value="web-vitrine">Web Hosting Vitrine</option>
+                    <option value="web-ecommerce">Web Hosting E-commerce</option>
+                </select>
+
+                <button type="submit" class="save-button">Ajouter Client</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Administration Services. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+"""
+
+print(admin_clients_html)
