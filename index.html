@@ -1,12 +1,33 @@
-html_body_content = '''
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Services - Stockage et Création</title>
+    <!-- Lien vers votre fichier CSS externe -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
     <header>
+        <a href="#" class="login-link">Connexion</a>
         <h1>Mes Services de Stockage et Création</h1>
         <p>Des solutions sur mesure pour vos besoins numériques</p>
     </header>
 
+    <div class="landing-intro">
+        <h2>Découvrez nos solutions complètes</h2>
+        <p>Que vous soyez un particulier, un créateur de jeux ou une entreprise, nous avons le service qu'il vous faut. Explorez nos offres ci-dessous :</p>
+        <div class="intro-buttons">
+            <a href="#cloud-storage-section" class="cta-button">Stockage Cloud</a>
+            <a href="#game-storage-section" class="cta-button">Stockage Gaming</a>
+            <a href="#hosting-section" class="cta-button">Hébergement Web</a>
+        </div>
+    </div>
+
     <div class="container">
 
-        <section class="service-section">
+        <section class="service-section" id="cloud-storage-section">
             <h2>1. Stockage Cloud Sécurisé et Ultra-Rapide</h2>
             <p><strong>Cible :</strong> Particuliers ou indépendants qui veulent sécuriser leurs documents.</p>
             <div class="pricing-grid">
@@ -47,7 +68,7 @@ html_body_content = '''
             </div>
         </section>
 
-        <section class="service-section">
+        <section class="service-section" id="game-storage-section">
             <h2>2. Stockage pour Créateurs de Jeux</h2>
             <p><strong>Cible :</strong> Développeurs qui ont besoin de stocker des fichiers énormes (textures, modèles 3D, versions du jeu).</p>
             <div class="pricing-grid">
@@ -80,7 +101,7 @@ html_body_content = '''
             </div>
         </section>
 
-        <section class="service-section">
+        <section class="service-section" id="hosting-section">
             <h2>3. Hébergement de Site Internet pour Entreprises</h2>
             <p><strong>Cible :</strong> Artisans, commerçants ou PME de la région Centre-Val de Loire.</p>
             <div class="pricing-grid">
@@ -123,6 +144,7 @@ html_body_content = '''
     <footer>
         <p>&copy; 2024 Mes Services. Tous droits réservés.</p>
     </footer>
-'''
 
-print(html_body_content)
+</body>
+</html>
+```
