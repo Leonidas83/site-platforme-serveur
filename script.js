@@ -1,4 +1,4 @@
-%%writefile script.js
+
 const API_BASE_URL = 'http://127.0.0.1:5000'; // Remplacez par l'URL de votre API Flask si elle est différente (ex: en production)
 
 // Fonction d'aide pour afficher les réponses de l'API
