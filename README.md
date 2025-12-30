@@ -1,4 +1,4 @@
-%%writefile README.md
+
 # Mon Projet d'Hébergement de Services
 
 Ce dépôt contient le code backend (API Flask avec SQLite) et une interface frontend simple pour la gestion de services d'hébergement, d'utilisateurs et de leurs abonnements.
