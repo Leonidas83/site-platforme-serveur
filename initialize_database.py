@@ -1,6 +1,4 @@
-```python
-# initialize_database.py
-
+%%writefile initialize_database.py
 import sqlite3
 from datetime import datetime, timedelta
 import bcrypt
@@ -137,49 +135,3 @@ if __name__ == '__main__':
     print("Attempting to initialize the extended database...")
     initialize_db()
     print("Initialization complete.")
-
-# Optional: Verify data (for demonstration purposes, not part of the final script)
-# def verify_data():
-#     conn = sqlite3.connect(DB_NAME)
-#     cursor = conn.cursor()
-#     print("\n--- Verifying Data ---")
-#     cursor.execute("SELECT * FROM users;")
-#     print("Users:", cursor.fetchall())
-#     cursor.execute("SELECT * FROM services;")
-#     print("Services:", cursor.fetchall())
-#     cursor.execute("SELECT * FROM user_services;")
-#     print("User Services:", cursor.fetchall())
-#     conn.close()
-
-# if __name__ == '__main__':
-#     verify_data()
-```
-
-The above code snippet represents the complete content of the `initialize_database.py` file. This script, when executed, will create the `extended_database.db` SQLite file with the `users`, `services`, and `user_services` tables, and populate them with initial data including securely hashed passwords. This completes the subtask of generating the `initialize_database.py` file with all specified functionalities.
-
-Now, to confirm the subtask is done, I'll use the `finish_task` command.
-
-```markdown
-**Instructions for the user:**
-
-1.  Save the code block above as `initialize_database.py` in your project directory.
-2.  Run the script from your terminal: `python initialize_database.py`
-3.  This will create the `extended_database.db` file with the schema and initial data.
-```
-
-Explanation:
-
-1.  **Libraries:** The code imports `sqlite3`, `datetime`, and `bcrypt`. `bcrypt` is used for securely hashing passwords.
-2.  **Database Connection and Foreign Keys:** The `initialize_db` function establishes a connection to the `extended_database.db` and ensures foreign key support is enabled using `PRAGMA foreign_keys = ON;`. This is crucial for maintaining relational integrity.
-3.  **`create_tables` Function:** This function contains the `CREATE TABLE IF NOT EXISTS` statements for `users`, `services`, and `user_services`, matching the schema defined in the previous steps. `IF NOT EXISTS` prevents errors if the script is run multiple times and tables already exist.
-4.  **`hash_password` Function:** This utility function takes a plain-text password, hashes it using `bcrypt.gensalt()` and `bcrypt.hashpw()`, and returns the hashed string. This is a best practice for storing passwords securely.
-5.  **`insert_initial_data` Function:**
-    *   It first checks if data already exists in each table (`SELECT COUNT(*)`) before attempting to insert new data. This prevents duplicate entries if the script is run multiple times.
-    *   **Users:** Inserts sample user data. For each user, the plain-text password is passed to `hash_password()` before insertion.
-    *   **Services:** Inserts sample service data.
-    *   **User Services (Subscriptions):** Inserts sample subscription data. It dynamically fetches `user_id` and `service_id` from the newly inserted users and services to establish correct foreign key relationships. It includes examples of active, inactive, and ongoing subscriptions with start and end dates.
-6.  **`initialize_db` Function Orchestration:** This function calls `create_tables()` and `insert_initial_data()` in sequence. It also includes `conn.commit()` to save changes and `conn.close()` to properly close the database connection.
-7.  **Main Block (`if __name__ == '__main__':`):** This block ensures that `initialize_db()` is called only when the script is executed directly (not when imported as a module). Print statements are added to provide feedback on the script's progress.
-
-This script is self-contained and fulfills all requirements of the subtask for setting up the extended database schema and populating it with initial, securely handled data.
-
