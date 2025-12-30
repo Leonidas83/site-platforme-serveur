@@ -1,264 +1,90 @@
+%%writefile index.html
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Services - Stockage et Création</title>
-    <!-- Lien vers votre fichier CSS externe -->
-    <link rel="stylesheet" href="style.css">
+    <title>Flask API Frontend Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        div { margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="date"] { width: calc(100% - 22px); padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ddd; box-sizing: border-box; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; margin-top: 5px; }
+        button:hover { background-color: #0056b3; }
+        .response-box { background-color: #e9e9e9; border: 1px solid #ccc; padding: 10px; white-space: pre-wrap; word-wrap: break-word; min-height: 50px; margin-top: 10px; border-radius: 4px; }
+        h3 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 20px; color: #333; }
+        hr { margin: 30px 0; border: 0; border-top: 1px solid #eee; }
+        .section-title { background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+    </style>
 </head>
 <body>
+    <h1>Flask API Frontend Demo</h1>
 
-    <header>
-        <a href="#" class="login-link" id="show-login-form">Connexion</a>
-        <h1>Mes Services de Stockage et Création</h1>
-        <p>Des solutions sur mesure pour vos besoins numériques</p>
-    </header>
+    <div class="section-title"><h2>User Management</h2></div>
 
-    <!-- Registration Message (already present) -->
-    <div id="registration-message" class="hidden-form-message">
-        <p>🎉 Votre inscription a été effectuée avec succès ! Bienvenue parmi nous.</p>
-    </div>
-    <button id="show-registration-message-button" style="display: none;">Simuler Inscription</button>
-
-    <!-- Login Form Section -->
-    <div id="login-form-section" class="form-container hidden-form-message">
-        <h2>Connexion</h2>
-        <form id="login-form">
-            <label for="login-email">Email :</label>
-            <input type="email" id="login-email" name="email" required>
-
-            <label for="login-password">Mot de passe :</label>
-            <input type="password" id="login-password" name="password" required>
-
-            <p id="login-error-message" style="color: red; display: none; text-align: center;">Email ou mot de passe incorrect.</p>
-
-            <button type="submit" class="cta-button">Se connecter</button>
-        </form>
-        <p>Pas encore de compte ? <a href="#" id="switch-to-register">S'inscrire</a></p>
-        <button class="close-button" id="close-login-form">X</button>
+    <!-- User Registration -->
+    <div>
+        <h3>User Registration</h3>
+        <label for="regEmail">Email:</label><input type="email" id="regEmail" value="newuser@example.com">
+        <label for="regPassword">Password:</label><input type="password" id="regPassword" value="newpass123">
+        <label for="regFirstName">First Name:</label><input type="text" id="regFirstName" value="New">
+        <label for="regLastName">Last Name:</label><input type="text" id="regLastName" value="User">
+        <button onclick="registerUser()">Register User</button>
+        <div class="response-box" id="regResponse"></div>
     </div>
 
-    <!-- Registration Form Section -->
-    <div id="register-form-section" class="form-container hidden-form-message">
-        <h2>Inscription</h2>
-        <form>
-            <label for="register-username">Nom d'utilisateur :</label>
-            <input type="text" id="register-username" name="username" required>
-
-            <label for="register-email">Email :</label>
-            <input type="email" id="register-email" name="email" required>
-
-            <label for="register-password">Mot de passe :</label>
-            <input type="password" id="register-password" name="password" required>
-
-            <label for="register-confirm-password">Confirmer mot de passe :</label>
-            <input type="password" id="register-confirm-password" name="confirm-password" required>
-
-            <button type="submit" class="cta-button">S'inscrire</button>
-        </form>
-        <p>Déjà un compte ? <a href="#" id="switch-to-login">Se connecter</a></p>
-        <button class="close-button" id="close-register-form">X</button>
+    <!-- User Login -->
+    <div>
+        <h3>User Login</h3>
+        <label for="loginEmail">Email:</label><input type="email" id="loginEmail" value="alice@example.com">
+        <label for="loginPassword">Password:</label><input type="password" id="loginPassword" value="password123">
+        <button onclick="loginUser()">Login User</button>
+        <p>Logged in User ID: <span id="loggedInUserId">None</span></p>
+        <div class="response-box" id="loginResponse"></div>
     </div>
 
-    <div class="landing-intro">
-        <h2>Découvrez nos solutions complètes</h2>
-        <p>Que vous soyez un particulier, un créateur de jeux ou une entreprise, nous avons le service qu'il vous faut. Explorez nos offres ci-dessous :</p>
-        <div class="intro-buttons">
-            <a href="#cloud-storage-section" class="cta-button">Stockage Cloud</a>
-            <a href="#game-storage-section" class="cta-button">Stockage Gaming</a>
-            <a href="#hosting-section" class="cta-button">Hébergement Web</a>
-        </div>
+    <!-- Search Users -->
+    <div>
+        <h3>Search Users</h3>
+        <label for="searchEmail">Email (partial):</label><input type="text" id="searchEmail" value="ali">
+        <label for="searchFirstName">First Name (partial):</label><input type="text" id="searchFirstName">
+        <label for="searchLastName">Last Name (partial):</label><input type="text" id="searchLastName">
+        <button onclick="searchUsers()">Search Users</button>
+        <div class="response-box" id="searchUsersResponse"></div>
     </div>
 
-    <div class="container">
+    <hr>
 
-        <section class="service-section" id="cloud-storage-section">
-            <h2>1. Stockage Cloud Sécurisé et Ultra-Rapide</h2>
-            <p><strong>Cible :</strong> Particuliers ou indépendants qui veulent sécuriser leurs documents.</p>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Offre Découverte</h3>
-                    <p class="price">3€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>100 Go de stockage</li>
-                        <li>Accès sécurisé</li>
-                        <li>Support standard</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir l'offre</a>
-                </div>
-                <div class="price-card">
-                    <h3>Offre Standard</h3>
-                    <p class="price">7€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>500 Go de stockage</li>
-                        <li>Accès sécurisé</li>
-                        <li>Support prioritaire</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir l'offre</a>
-                </div>
-                <div class="price-card">
-                    <h3>Offre Premium</h3>
-                    <p class="price">15€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>2 To de stockage</li>
-                        <li>Accès sécurisé</li>
-                        <li>Support 24/7</li>
-                        <li>Sauvegardes automatiques</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir l'offre</a>
-                </div>
-            </div>
-            <div class="selling-point">
-                <p>"Vos données sont stockées à Tours, pas aux USA. Accès ultra-rapide et vie privée respectée."</p>
-            </div>
-        </section>
+    <div class="section-title"><h2>Service Management</h2></div>
 
-        <section class="service-section" id="game-storage-section">
-            <h2>2. Stockage pour Créateurs de Jeux</h2>
-            <p><strong>Cible :</strong> Développeurs qui ont besoin de stocker des fichiers énormes (textures, modèles 3D, versions du jeu).</p>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Pack Creator</h3>
-                    <p class="price">12€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>500 Go de stockage</li>
-                        <li>Transfert illimité</li>
-                        <li>Stockage sur SSD (Vitesse Incluse)</li>
-                        <li>Support développeur</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir le pack</a>
-                </div>
-                <div class="price-card">
-                    <h3>Pack Studio</h3>
-                    <p class="price">25€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>2 To de stockage</li>
-                        <li>Transfert illimité</li>
-                        <li>Stockage sur SSD (Vitesse Incluse)</li>
-                        <li>Sauvegarde quotidienne</li>
-                        <li>Support premium</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir le pack</a>
-                </div>
-            </div>
-            <div class="selling-point">
-                <p>"Idéal pour Unity/Unreal Engine. Stockage haute performance sur SSD pour ne pas ralentir votre développement."</p>
-            </div>
-        </section>
-
-        <section class="service-section" id="hosting-section">
-            <h2>3. Hébergement de Site Internet pour Entreprises</h2>
-            <p><strong>Cible :</strong> Artisans, commerçants ou PME de la région Centre-Val de Loire.</p>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Hébergement Vitrine</h3>
-                    <p class="price">10-15€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>Site simple WordPress</li>
-                        <li>Support local</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir l'offre</a>
-                </div>
-                <div class="price-card">
-                    <h3>Hébergement E-commerce</h3>
-                    <p class="price">25-40€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>Boutique en ligne</li>
-                        <li>Support local</li>
-                    </ul>
-                    <a href="#" class="cta-button">Choisir l'offre</a>
-                </div>
-                <div class="price-card">
-                    <h3>Option Maintenance</h3>
-                    <p class="price">+20€ <span>/ mois</span></p>
-                    <ul class="features">
-                        <li>Mises à jour</li>
-                        <li>Sauvegardes régulières</li>
-                        <li>Le meilleur rapport qualité/prix !</li>
-                    </ul>
-                    <a href="#" class="cta-button">Ajouter l'option</a>
-                </div>
-            </div>
-            <div class="selling-point">
-                <p>"Support local. Si vous avez un problème, vous avez un interlocuteur à Tours, pas un robot."</p>
-            </div>
-        </section>
-
+    <!-- Get All Services -->
+    <div>
+        <h3>Get All Services</h3>
+        <button onclick="getAllServices()">Fetch Services</button>
+        <div class="response-box" id="servicesResponse"></div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Mes Services. Tous droits réservés.</p>
-    </footer>
+    <hr>
 
-    <script>
-        // Toggle registration message
-        document.getElementById('show-registration-message-button').addEventListener('click', function() {
-            var messageDiv = document.getElementById('registration-message');
-            if (messageDiv.style.display === 'none' || messageDiv.style.display === '') {
-                messageDiv.style.display = 'block';
-            } else {
-                messageDiv.style.display = 'none';
-            }
-        });
+    <div class="section-title"><h2>Subscription Management</h2></div>
 
-        // Admin Login Credentials
-        const ADMIN_EMAIL = 'admin@example.com';
-        const ADMIN_PASSWORD = 'password';
+    <!-- User Subscriptions -->
+    <div>
+        <h3>Manage Subscriptions</h3>
+        <label for="subUserId">User ID (for subscriptions):</label><input type="number" id="subUserId" value="1">
+        <label for="subServiceId">Service ID:</label><input type="number" id="subServiceId" value="1">
+        <label for="subStartDate">Start Date (YYYY-MM-DD):</label><input type="date" id="subStartDate" value="2023-01-01">
+        <label for="subEndDate">End Date (YYYY-MM-DD, optional):</label><input type="date" id="subEndDate">
+        <label for="subActive">Active (1 for true, 0 for false):</label><input type="number" id="subActive" value="1" min="0" max="1">
+        <br>
+        <button onclick="getUserSubscriptions()">Get All Subscriptions for User</button>
+        <button onclick="addSubscription()">Add Subscription</button>
+        <button onclick="updateSubscription()">Update Subscription</button>
+        <button onclick="deleteSubscription()">Delete Subscription</button>
+        <div class="response-box" id="subsResponse"></div>
+    </div>
 
-        // Show/Hide Login Form
-        document.getElementById('show-login-form').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('login-form-section').style.display = 'block';
-            document.getElementById('register-form-section').style.display = 'none'; // Hide register if open
-            document.getElementById('login-error-message').style.display = 'none'; // Hide previous error
-        });
-
-        // Close Login Form
-        document.getElementById('close-login-form').addEventListener('click', function() {
-            document.getElementById('login-form-section').style.display = 'none';
-            document.getElementById('login-error-message').style.display = 'none'; // Hide error on close
-        });
-
-        // Handle Login Form Submission
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const errorMessage = document.getElementById('login-error-message');
-
-            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-                // Admin login successful, redirect to admin interface
-                window.location.href = 'admin.html';
-            } else {
-                // Incorrect credentials
-                errorMessage.style.display = 'block';
-            }
-        });
-
-        // Show/Hide Register Form (initially hidden, will be linked from login or header later)
-        document.getElementById('switch-to-register').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('login-form-section').style.display = 'none';
-            document.getElementById('register-form-section').style.display = 'block';
-        });
-
-        // Close Register Form
-        document.getElementById('close-register-form').addEventListener('click', function() {
-            document.getElementById('register-form-section').style.display = 'none';
-        });
-
-        // Switch back to Login from Register
-        document.getElementById('switch-to-login').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('register-form-section').style.display = 'none';
-            document.getElementById('login-form-section').style.display = 'block';
-            document.getElementById('login-error-message').style.display = 'none'; // Hide error on switch
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-"""
-
-print(final_html_content)
