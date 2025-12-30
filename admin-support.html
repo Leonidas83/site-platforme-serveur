@@ -1,90 +1,17 @@
+%%writefile admin-support.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Support Client</title>
+    <title>Administration Support</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <header>
-        <h1>Gestion du Support Client</h1>
-        <p><a href="admin.html" style="color: white; text-decoration: none;">&#8592; Retour au Tableau de Bord</a></p>
-    </header>
-
-    <main>
-        <section id="support-tickets-section">
-            <h2>Tickets de Support Ouverts</h2>
-            <div class="ticket-filters">
-                <label for="filter-status">Filtrer par statut:</label>
-                <select id="filter-status">
-                    <option value="all">Tous</option>
-                    <option value="open">Ouvert</option>
-                    <option value="in-progress">En cours</option>
-                    <option value="closed">Fermé</option>
-                </select>
-                <label for="search-ticket">Rechercher un ticket:</label>
-                <input type="text" id="search-ticket" placeholder="ID, Sujet, Client...">
-                <button class="cta-button">Appliquer les filtres</button>
-            </div>
-            <table class="client-table">
-                <thead>
-                    <tr>
-                        <th>ID Ticket</th>
-                        <th>Client</th>
-                        <th>Email</th>
-                        <th>Sujet</th>
-                        <th>Statut</th>
-                        <th>Date Création</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>SUP001</td>
-                        <td>Jean Valjean</td>
-                        <td>jean.v@example.com</td>
-                        <td>Problème de connexion</td>
-                        <td>Ouvert</td>
-                        <td>2024-03-10</td>
-                        <td><button class="save-button">Voir Ticket</button></td>
-                    </tr>
-                    <tr>
-                        <td>SUP002</td>
-                        <td>Cosette Thénardier</td>
-                        <td>cosette.t@example.com</td>
-                        <td>Demande de fonctionnalité</td>
-                        <td>En cours</td>
-                        <td>2024-03-08</td>
-                        <td><button class="save-button">Voir Ticket</button></td>
-                    </tr>
-                    <!-- More ticket rows will be dynamically loaded -->
-                </tbody>
-            </table>
-        </section>
-
-        <section id="create-ticket-section">
-            <h2>Créer un Nouveau Ticket de Support</h2>
-            <form>
-                <label for="new-ticket-client-email">Email du Client:</label>
-                <input type="email" id="new-ticket-client-email" placeholder="email@example.com">
-
-                <label for="new-ticket-subject">Sujet:</label>
-                <input type="text" id="new-ticket-subject" placeholder="Sujet du ticket">
-
-                <label for="new-ticket-description">Description:</label>
-                <textarea id="new-ticket-description" placeholder="Décrivez le problème ou la demande" rows="6"></textarea>
-
-                <button type="submit" class="save-button">Créer Ticket</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Administration Services. Tous droits réservés.</p>
-    </footer>
+    <div class="container">
+        <h1>Outils de Support Admin</h1>
+        <p>Cette page fournira des outils pour le support technique et la gestion des incidents.</p>
+        <!-- Le contenu dynamique et les formulaires iront ici -->
+    </div>
 </body>
 </html>
-"""
-
-print(admin_support_html)
