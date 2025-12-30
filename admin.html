@@ -4,66 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin Dashboard - Accueil</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <header>
-        <h1>Administration Panel</h1>
+        <h1>Panneau d'Administration Central</h1>
     </header>
 
     <main>
-        <section id="price-management-section">
-            <h2>Price Management</h2>
-            <div class="service-price-manager">
-                <h3>Cloud Storage</h3>
-                <p>Current Price: <span id="cloud-storage-current-price">7€</span> / month</p>
-                <label for="cloud-storage-new-price">New Price:</label>
-                <input type="number" id="cloud-storage-new-price" placeholder="Enter new price" min="0" step="0.01">
-                <button class="save-button" data-service="cloud-storage">Save</button>
-            </div>
-
-            <div class="service-price-manager">
-                <h3>Game Storage</h3>
-                <p>Current Price: <span id="game-storage-current-price">25€</span> / month</p>
-                <label for="game-storage-new-price">New Price:</label>
-                <input type="number" id="game-storage-new-price" placeholder="Enter new price" min="0" step="0.01">
-                <button class="save-button" data-service="game-storage">Save</button>
-            </div>
-
-            <div class="service-price-manager">
-                <h3>Web Hosting</h3>
-                <p>Current Price: <span id="web-hosting-current-price">25-40€</span> / month</p>
-                <label for="web-hosting-new-price">New Price:</label>
-                <input type="text" id="web-hosting-new-price" placeholder="Enter new price (e.g., 20-35€)">
-                <button class="save-button" data-service="web-hosting">Save</button>
+        <section id="dashboard-overview">
+            <h2>Bienvenue sur le Tableau de Bord Admin</h2>
+            <p>Utilisez les liens ci-dessous pour naviguer entre les différentes sections d'administration.</p>
+            <div class="dashboard-links-grid">
+                <a href="admin-prices-promos.html" class="dashboard-tile">
+                    <h3>Gestion des Prix & Promotions</h3>
+                    <p>Mettre à jour les tarifs des services et gérer les campagnes promotionnelles.</p>
+                </a>
+                <a href="admin-clients.html" class="dashboard-tile">
+                    <h3>Gestion des Clients</h3>
+                    <p>Accéder aux informations clients, gérer les abonnements et les comptes.</p>
+                </a>
+                <a href="admin-support.html" class="dashboard-tile">
+                    <h3>Support Client</h3>
+                    <p>Visualiser et répondre aux demandes de support des utilisateurs.</p>
+                </a>
+                <!-- Ajoutez d'autres tuiles/liens si besoin -->
             </div>
         </section>
 
-        <section id="promotion-management-section">
-            <h2>Promotion Management</h2>
-            <div class="promotion-editor">
-                <h3>Create New Promotion</h3>
-                <label for="promo-code">Promotion Code:</label>
-                <input type="text" id="promo-code" placeholder="e.g., SPRING20">
-
-                <label for="promo-discount">Discount Percentage:</label>
-                <input type="number" id="promo-discount" placeholder="e.g., 20" min="0" max="100" step="0.1">
-
-                <label for="promo-start-date">Start Date:</label>
-                <input type="date" id="promo-start-date">
-
-                <label for="promo-end-date">End Date:</label>
-                <input type="date" id="promo-end-date">
-
-                <label for="promo-description">Description:</label>
-                <textarea id="promo-description" placeholder="Describe the promotion (e.g., 20% off all cloud storage plans)" rows="4"></textarea>
-
-                <button class="save-button">Save Promotion</button>
+        <!-- Section de résumé rapide optionnelle -->
+        <section id="quick-summary-section">
+            <h2>Résumé Rapide</h2>
+            <div class="summary-cards-grid">
+                <div class="summary-card">
+                    <h3>Clients Actifs</h3>
+                    <p>1,234</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Promotions en Cours</h3>
+                    <p>3</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Demandes de Support (24h)</h3>
+                    <p>12</p>
+                </div>
             </div>
         </section>
     </main>
 
+    <footer>
+        <p>&copy; 2024 Administration Services. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
 ```
