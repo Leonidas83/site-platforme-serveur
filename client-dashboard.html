@@ -1,87 +1,23 @@
+%%writefile client-dashboard.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Tableau de Bord Client</title>
-    <link rel="stylesheet" href="client-dashboard.css">
+    <title>Tableau de Bord Client</title>
+    <link rel="stylesheet" href="style.css"> <!-- Supposant un fichier CSS commun -->
 </head>
 <body>
-    <header>
-        <h1>Bienvenue, [Nom du Client] !</h1>
-        <p>Gérez vos services en toute simplicité.</p>
-        <nav>
-            <a href="#" class="nav-link">Accueil</a>
-            <a href="#" class="nav-link">Mon Compte</a>
-            <a href="#" class="nav-link">Support</a>
-            <a href="index.html" class="nav-link">Déconnexion</a>
-        </nav>
-    </header>
-
-    <main>
-        <section id="client-info">
-            <h2>Mes Informations Générales</h2>
-            <div class="info-card">
-                <p><strong>Email:</strong> client@example.com</p>
-                <p><strong>Dernière connexion:</strong> 15 mai 2024</p>
-                <p><strong>Statut du compte:</strong> Actif</p>
-                <button class="action-button primary">Mettre à jour mon profil</button>
-            </div>
-        </section>
-
-        <section id="my-services">
-            <h2>Mes Services Souscrits</h2>
-            <div class="service-grid">
-
-                <div class="service-card">
-                    <h3>Stockage Cloud - Offre Premium</h3>
-                    <p class="service-description">2 To de stockage sécurisé avec sauvegardes automatiques.</p>
-                    <div class="service-status active">
-                        <span>Statut: Actif</span>
-                        <span>Prochain paiement: 20/06/2024</span>
-                    </div>
-                    <div class="service-actions">
-                        <button class="action-button">Gérer le stockage</button>
-                        <button class="action-button">Voir l'utilisation</button>
-                        <button class="action-button secondary">Contacter le support</button>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <h3>Stockage Gaming - Pack Studio</h3>
-                    <p class="service-description">2 To de stockage SSD ultra-rapide pour vos projets de jeux.</p>
-                    <div class="service-status pending">
-                        <span>Statut: En attente de paiement</span>
-                        <span>Date d'échéance: 25/05/2024</span>
-                    </div>
-                    <div class="service-actions">
-                        <button class="action-button primary">Payer maintenant</button>
-                        <button class="action-button">Détails de l'offre</button>
-                        <button class="action-button secondary">Mettre à niveau</button>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <h3>Hébergement Web - E-commerce</h3>
-                    <p class="service-description">Solution d'hébergement performante pour votre boutique en ligne.</p>
-                    <div class="service-status terminated">
-                        <span>Statut: Résilié</span>
-                        <span>Date de fin: 30/04/2024</span>
-                    </div>
-                    <div class="service-actions">
-                        <button class="action-button primary">Réactiver l'offre</button>
-                        <button class="action-button secondary">Contacter le support</button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Mes Services. Tous droits réservés.</p>
-    </footer>
+    <div class="container">
+        <h1>Mon Tableau de Bord</h1>
+        <p>Bienvenue [Nom du Client] ! Ici vous pouvez voir vos services actifs et gérer votre compte.</p>
+        <h2>Mes Services</h2>
+        <div id="user-services-list">
+            <!-- Les services de l'utilisateur seront chargés ici -->
+            <p>Chargement de vos services...</p>
+        </div>
+        <!-- Ajoutez d'autres éléments dynamiques ici -->
+    </div>
+    <script src="script.js"></script> <!-- Pour interagir avec l'API -->
 </body>
 </html>
-"""
-
