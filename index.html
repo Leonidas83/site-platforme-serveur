@@ -25,12 +25,14 @@ final_html_content = """
     <!-- Login Form Section -->
     <div id="login-form-section" class="form-container hidden-form-message">
         <h2>Connexion</h2>
-        <form>
+        <form id="login-form">
             <label for="login-email">Email :</label>
             <input type="email" id="login-email" name="email" required>
 
             <label for="login-password">Mot de passe :</label>
             <input type="password" id="login-password" name="password" required>
+
+            <p id="login-error-message" style="color: red; display: none; text-align: center;">Email ou mot de passe incorrect.</p>
 
             <button type="submit" class="cta-button">Se connecter</button>
         </form>
@@ -201,16 +203,38 @@ final_html_content = """
             }
         });
 
+        // Admin Login Credentials
+        const ADMIN_EMAIL = 'nordinehenchir83@gmail.com';
+        const ADMIN_PASSWORD = 'Spartiate01@';
+
         // Show/Hide Login Form
         document.getElementById('show-login-form').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('login-form-section').style.display = 'block';
             document.getElementById('register-form-section').style.display = 'none'; // Hide register if open
+            document.getElementById('login-error-message').style.display = 'none'; // Hide previous error
         });
 
         // Close Login Form
         document.getElementById('close-login-form').addEventListener('click', function() {
             document.getElementById('login-form-section').style.display = 'none';
+            document.getElementById('login-error-message').style.display = 'none'; // Hide error on close
+        });
+
+        // Handle Login Form Submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorMessage = document.getElementById('login-error-message');
+
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                // Admin login successful, redirect to admin interface
+                window.location.href = 'admin.html';
+            } else {
+                // Incorrect credentials
+                errorMessage.style.display = 'block';
+            }
         });
 
         // Show/Hide Register Form (initially hidden, will be linked from login or header later)
@@ -230,6 +254,7 @@ final_html_content = """
             e.preventDefault();
             document.getElementById('register-form-section').style.display = 'none';
             document.getElementById('login-form-section').style.display = 'block';
+            document.getElementById('login-error-message').style.display = 'none'; // Hide error on switch
         });
     </script>
 
