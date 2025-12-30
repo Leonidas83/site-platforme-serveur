@@ -1,61 +1,22 @@
-```html
+%%writefile admin.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Accueil</title>
+    <title>Tableau de Bord Admin</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <header>
-        <h1>Panneau d'Administration Central</h1>
-    </header>
-
-    <main>
-        <section id="dashboard-overview">
-            <h2>Bienvenue sur le Tableau de Bord Admin</h2>
-            <p>Utilisez les liens ci-dessous pour naviguer entre les différentes sections d'administration.</p>
-            <div class="dashboard-links-grid">
-                <a href="admin-prices-promos.html" class="dashboard-tile">
-                    <h3>Gestion des Prix & Promotions</h3>
-                    <p>Mettre à jour les tarifs des services et gérer les campagnes promotionnelles.</p>
-                </a>
-                <a href="admin-clients.html" class="dashboard-tile">
-                    <h3>Gestion des Clients</h3>
-                    <p>Accéder aux informations clients, gérer les abonnements et les comptes.</p>
-                </a>
-                <a href="admin-support.html" class="dashboard-tile">
-                    <h3>Support Client</h3>
-                    <p>Visualiser et répondre aux demandes de support des utilisateurs.</p>
-                </a>
-                <!-- Ajoutez d'autres tuiles/liens si besoin -->
-            </div>
-        </section>
-
-        <!-- Section de résumé rapide optionnelle -->
-        <section id="quick-summary-section">
-            <h2>Résumé Rapide</h2>
-            <div class="summary-cards-grid">
-                <div class="summary-card">
-                    <h3>Clients Actifs</h3>
-                    <p>1,234</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Promotions en Cours</h3>
-                    <p>3</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Demandes de Support (24h)</h3>
-                    <p>12</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Administration Services. Tous droits réservés.</p>
-    </footer>
+    <div class="container">
+        <h1>Tableau de Bord Administrateur</h1>
+        <p>Bienvenue sur le panneau d'administration. Utilisez les liens ci-dessous pour gérer les différentes sections.</p>
+        <ul>
+            <li><a href="admin-clients.html">Gestion des Clients</a></li>
+            <li><a href="admin-prices-promos.html">Gestion des Prix et Promotions</a></li>
+            <li><a href="admin-support.html">Outils de Support</a></li>
+            <!-- Ajoutez d'autres liens d'administration ici -->
+        </ul>
+    </div>
 </body>
 </html>
-```
